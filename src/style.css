@@ -1,0 +1,73 @@
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #040d12;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+}
+ul,
+li,
+a {
+  list-style-type: none;
+}
+
+.font-text {
+  font-size: 16px;
+}
+.font-tiny {
+  font-size: 14px;
+}
+.font-title {
+  font-size: 18px;
+}
+.custom-cursor {
+  cursor: pointer !important;
+}
+.custom-hover-for-navbar:hover {
+  transition: all 0.3s;
+}
+.custom-hover-for-navbar:hover {
+  background-color: white;
+  border-radius: 50%;
+}
+.custom-height-for-overview {
+  height: 10rem;
+}
+.custom-color-for-card {
+  background-color: #352f44;
+}
+.custom-border-for-card {
+  border: 1px solid #352f44;
+}
+.custom-color-for-header {
+  background-color: #183d3d;
+}
+.custom-radius-for-header {
+  border-radius: 6% 94% 11% 89% / 100% 0% 100% 0%;
+  opacity: 0.9;
+  height: 5rem;
+}
+.custom-position-for-list-show-movie {
+  top: 104%;
+  left: 11px;
+  width: 26.7rem;
+}
+.custom-size-for-img {
+  width: 5rem;
+  height: 5rem;
+}
+.cutom-color-for-list-show-movie {
+  background-color: #191919;
+}
+.cutom-color-for-list-show-movie::before {
+  color: white;
+  display: flex;
+  justify-content: first baseline;
+}
