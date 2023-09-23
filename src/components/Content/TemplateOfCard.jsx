@@ -1,9 +1,10 @@
 import React from "react";
-
+import "animate.css";
 import { Link } from "react-router-dom";
 
 
 export default function TemplateOfCard({
+  id,
   title,
   overview,
   poster_path,
@@ -12,11 +13,12 @@ export default function TemplateOfCard({
   vote_average,
   original_language,
 }) {
+
   return (
     <>
       <div className="col d-flex justify-content-center mt-5">
         <div
-          className="card custom-border-for-card custom-color-for-card "
+          className={`card custom-border-for-card custom-color-for-card custom-z-index-for-card animate__animated animate__fadeInUp`}
           style={{ width: 18 + "rem" }}
         >
           <img
@@ -52,7 +54,11 @@ export default function TemplateOfCard({
                 {overview}
               </p>
 
-              <Link to={"/SpecificMovie"} className="btn btn-primary btn-sm">
+              <Link
+                to={"/SpecificMovie"}
+                className="btn btn-primary btn-sm"
+            
+              >
                 view more
               </Link>
             </div>

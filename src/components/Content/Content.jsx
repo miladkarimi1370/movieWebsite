@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import TemplateOfCard from "./TemplateOfCard";
 import Pagination from "./Pagination";
-
+import { Oval } from "react-loader-spinner";
 export default function Content() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [showLoader, setShowLoader] = useState(true);
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=360eec290c1f282ea30004cd946075a7&page=${page}`
@@ -13,11 +14,13 @@ export default function Content() {
       .then((respone) => {
         setMovies(respone.results);
         setPage(respone.page);
+        setShowLoader(false);
       });
   }, [page]);
 
   const pageHandler = (e) => {
     setPage(e);
+    setShowLoader(true);
   };
 
   const informationOfMovies =
@@ -28,14 +31,33 @@ export default function Content() {
 
   return (
     <>
-      <div className="container mt-5">
-        <div className="row">{informationOfMovies && informationOfMovies}</div>
-        <Pagination
-          pageHandler={pageHandler}
-          totalPages={movies.total_pages}
-          currentPage={page}
-        />
-      </div>
+      {!showLoader ? (
+        <div className="container mt-5">
+          <div className="row">
+            {informationOfMovies && informationOfMovies}
+          </div>
+          <Pagination
+            pageHandler={pageHandler}
+            totalPages={movies.total_pages}
+            currentPage={page}
+          />
+        </div>
+      ) : (
+        <div className="custom-property-for-loader">
+          <Oval
+            height={100}
+            width={100}
+            color="#526D82"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#526D82"
+            strokeWidth={3}
+            strokeWidthSecondary={3}
+          />
+        </div>
+      )}
     </>
   );
 }

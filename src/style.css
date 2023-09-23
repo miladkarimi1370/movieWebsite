@@ -1,3 +1,4 @@
+
 *,
 html,
 body {
@@ -27,8 +28,17 @@ a {
 .font-title {
   font-size: 18px;
 }
+.font-big {
+  font-size: 20px;
+}
 .custom-cursor {
   cursor: pointer !important;
+}
+.custom-z-index-for-list-show-movie {
+  z-index: 10;
+}
+.custom-z-index-for-card {
+  z-index: 1;
 }
 .custom-hover-for-navbar:hover {
   transition: all 0.3s;
@@ -70,4 +80,10 @@ a {
   color: white;
   display: flex;
   justify-content: first baseline;
+}
+.custom-property-for-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

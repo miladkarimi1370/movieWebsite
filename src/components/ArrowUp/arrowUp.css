@@ -1,0 +1,6 @@
+.arrowUp{
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    cursor: pointer;
+}

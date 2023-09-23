@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 export default function Header() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [showListMovies, setShowListMovis] = useState("invisible");
-
+  
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=360eec290c1f282ea30004cd946075a7&query=${query}`
@@ -58,7 +59,7 @@ export default function Header() {
             />
             {/* start list grout of searching movies */}
             <ol
-              className={`list-group list-group-numbered position-absolute custom-position-for-list-show-movie ${showListMovies}`}
+              className={`list-group list-group-numbered position-absolute custom-z-index-for-list-show-movie custom-position-for-list-show-movie ${showListMovies}`}
             >
               {movies.length &&
                 movies.map((movie) => {

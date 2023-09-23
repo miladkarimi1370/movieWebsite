@@ -33,11 +33,12 @@ export default function Pagination({ pageHandler, currentPage, totalPages }) {
               Previous
             </a>
           </li>
-          <li className="page-item">
+          <li className="page-item active">
             <a
               className="page-link"
               href="#"
               onClick={(e) => pageHandler(Number(e.target.innerText))}
+              
             >
               {currentPage}
             </a>

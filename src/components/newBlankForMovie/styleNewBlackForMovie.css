@@ -1,0 +1,56 @@
+.wrapper-of-backdrop {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.wrapper-of-backdrop .custom-opacity-for-backdrop {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.custom-padding-for-col-new-blank {
+  padding-right: 0;
+  padding-left: 0;
+}
+.wrapper-of-img-in-new-blank {
+  width: 100%;
+  height: 100%;
+}
+.img-in-new-black {
+  border-radius: 20px;
+  border: 5px solid #f8de22;
+  width: 100%;
+  height: 100%;
+}
+.custom-padding-for-col8 {
+  padding-right: 5rem;
+}
+.line-height-p-2 {
+  line-height: 2rem;
+}
+.star-svg{
+  width: 2rem;
+}
+.wrapper-of-img-in-new-blank{
+  position: relative;
+}
+.wrapper-of-img-in-new-blank::after{
+    content: '';
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    background-color: #EE9322;
+    bottom: 25px;
+    transform: rotate(45deg);
+    border-radius: 10px;
+}
+.custom-position-of-chevron-in-new-blank{
+  bottom: 8%;
+  z-index: 10;
+}
