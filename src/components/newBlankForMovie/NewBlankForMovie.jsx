@@ -1,19 +1,30 @@
 import React from "react";
-import { useState } from "react";
 import { useEffect } from "react";
 import "./styleNewBlackForMovie.css";
 import { calculateRateOfMovie } from "../Funcs/Functions";
 import StarRating from "./StarRating";
-export default function NewBlankForMovie() {
-  const [id_movies, set_IdMoveis] = useState(1008042);
+import { useContext } from "react";
+import idMovieContext from "../../contextfile/context";
+import { useState } from "react";
+import Genres from "./Genres";
+import Language from "./Language";
+import Country from "./Country";
+import Companies from "./Companies";
 
+export default function NewBlankForMovie() {
+  const { idMovie } = useContext(idMovieContext);
+  const [dataOfMovie, setDataOfMovie] = useState({});
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id_movies}?api_key=360eec290c1f282ea30004cd946075a7&`
+      `https://api.themoviedb.org/3/movie/${idMovie}?api_key=360eec290c1f282ea30004cd946075a7&`
     )
       .then((response) => response.json())
-      .then((response2) => console.log(response2));
-  }, []);
+      .then((response2) => {
+        console.log(response2);
+        setDataOfMovie(response2);
+      });
+  }, [idMovie]);
+
   return (
     <>
       <div className="container-fluid mt-5">
@@ -22,8 +33,9 @@ export default function NewBlankForMovie() {
             <div
               className="wrapper-of-backdrop position-relative"
               style={{
-                backgroundImage:
-                  'url("https://image.tmdb.org/t/p/original/8pjWz2lt29KyVGoq1mXYu6Br7dE.jpg")',
+                backgroundImage: `url('https://image.tmdb.org/t/p/original${
+                  dataOfMovie.backdrop_path && dataOfMovie.backdrop_path
+                }')`,
               }}
             >
               <div className="custom-opacity-for-backdrop d-flex">
@@ -31,9 +43,7 @@ export default function NewBlankForMovie() {
                   <div className="wrapper-of-img-in-new-blank d-flex justify-content-center p-5 custom-cursor">
                     <img
                       className="img-in-new-black"
-                      src={
-                        "https://image.tmdb.org/t/p/w500/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
-                      }
+                      src={`https://image.tmdb.org/t/p/w500${dataOfMovie.poster_path}`}
                       alt=""
                     />
                     <i
@@ -46,7 +56,7 @@ export default function NewBlankForMovie() {
                   <div className="wrapper-of-part-title-and-rate mb-5 d-flex justify-content-between">
                     <div className="wrapper-of-title">
                       <h3 className="text-white">
-                        Download No One Will Save You 2023
+                        Download {dataOfMovie.title}
                       </h3>
                       <div className="d-flex">
                         <i
@@ -62,15 +72,17 @@ export default function NewBlankForMovie() {
                       <div className="wrapper-of-detail-rate border-bottom">
                         <h6>
                           <span
-                            className={`font-big  ${calculateRateOfMovie(7.2)}`}
+                            className={`font-big  ${calculateRateOfMovie(
+                              dataOfMovie.vote_average
+                            )}`}
                           >
-                            7.2
+                            {dataOfMovie.vote_average}
                           </span>{" "}
                           / 10
                         </h6>
                       </div>
                       <div className="wrapper-of-point mt-1">
-                        <h6>280 votes</h6>
+                        <h6>{dataOfMovie.vote_count} votes</h6>
                       </div>
                       <div className="mt-1">
                         <i
@@ -92,47 +104,57 @@ export default function NewBlankForMovie() {
                         className="fa-solid fa-tv px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      Quality : 1080p WEB-DL
+                      release date : {dataOfMovie.release_date}
                     </h6>
                     <h6 className="text-white">
                       <i
                         className="fa-regular fa-clock px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      time : 94 minute
+                      time : {dataOfMovie.runtime} minute
                     </h6>
                   </div>
                   <div className="wrapper-of-part2 d-flex justify-content-between py-2">
                     <h6 className="text-white">
                       <i
-                        className="fa-solid fa-file-lines px-2"
-                        style={{ color: "#deb522" }}
+                        className="fa-solid fa-masks-theater px-2"
+                        style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      Genres : Action , Horror , Adventure
+                      <Genres genres={dataOfMovie && dataOfMovie.genres} />
                     </h6>
                     <h6>
                       <i
-                        className="fa-solid fa-people-group px-2"
-                        style={{ color: "#deb522" }}
+                        className="fa-solid fa-sack-dollar px-2"
+                        style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      MPA : PG13
+                      Budget : {dataOfMovie.budget}$
                     </h6>
                   </div>
 
                   <div className="wrapper-of-part3 d-flex justify-content-between py-2">
                     <h6 className="text-white">
                       <i
-                        className="fa-solid fa-clapperboard px-2"
-                        style={{ color: "#deb522" }}
+                        className="fa-solid fa-language px-2"
+                        style={{ color: "#fdb522" }}
                       ></i>
-                      Director : James Cameron
+                      <Language
+                        languages={
+                          dataOfMovie.spoken_languages &&
+                          dataOfMovie.spoken_languages
+                        }
+                      />
                     </h6>
                     <h6 className="text-white">
                       <i
                         className="fa-solid fa-globe px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      Country : United State
+                      <Country
+                        country={
+                          dataOfMovie.production_countries &&
+                          dataOfMovie.production_countries
+                        }
+                      />
                     </h6>
                   </div>
                   <h6 className="text-white py-2">
@@ -140,24 +162,26 @@ export default function NewBlankForMovie() {
                       className="fa-solid fa-feather px-2"
                       style={{ color: "#fdb522" }}
                     ></i>{" "}
-                    Writer : James Cameron
+                    Revenue : {dataOfMovie.revenue}$
                   </h6>
                   <h6 className="text-white py-2">
                     <i
-                      className="fa-solid fa-masks-theater px-2"
+                      className="fa-solid fa-bullhorn px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    Tom Cruz , Quackin phonix , Eddy Morphy , Daniel Radclif
+                    <Companies
+                      companies={
+                        dataOfMovie.production_companies &&
+                        dataOfMovie.production_companies
+                      }
+                    />
                   </h6>
                   <h6 className="text-whtie py-2 line-height-p-2">
                     <i
                       className="fa-solid fa-film px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    When a group of friends discover how to conjure spirits
-                    using an embalmed hand, they become hooked on the new
-                    thrill, until one of them goes too far and unleashes
-                    terrifying supernatural forces.
+                    {dataOfMovie.overview && dataOfMovie.overview}
                   </h6>
                   <div className="wrapper-of-critisize-poeple py-2 d-flex justify-content-between">
                     <div className="wrapper-of-vote-critisize d-flex justify-content-start align-items-center px-2">

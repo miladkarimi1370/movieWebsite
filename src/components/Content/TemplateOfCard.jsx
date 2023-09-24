@@ -13,7 +13,6 @@ export default function TemplateOfCard({
   vote_average,
   original_language,
 }) {
-
   return (
     <>
       <div className="col d-flex justify-content-center mt-5">
@@ -54,11 +53,7 @@ export default function TemplateOfCard({
                 {overview}
               </p>
 
-              <Link
-                to={"/SpecificMovie"}
-                className="btn btn-primary btn-sm"
-            
-              >
+              <Link to={"/SpecificMovie"} className="btn btn-primary btn-sm">
                 view more
               </Link>
             </div>
