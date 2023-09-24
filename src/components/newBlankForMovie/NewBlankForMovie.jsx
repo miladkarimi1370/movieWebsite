@@ -1,23 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import "./styleNewBlackForMovie.css";
-import { calculateRateOfMovie } from "../Funcs/Functions";
+import { calculateRateOfMovie } from "../Funcs/Funcs";
 import StarRating from "./StarRating";
 import { useContext } from "react";
 import idMovieContext from "../../contextfile/context";
 import { useState } from "react";
-import Genres from "./Genres";
-import Language from "./Language";
-import Country from "./Country";
-import Companies from "./Companies";
 
 export default function NewBlankForMovie() {
   const { idMovie } = useContext(idMovieContext);
   const [dataOfMovie, setDataOfMovie] = useState({});
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${idMovie}?api_key=360eec290c1f282ea30004cd946075a7&`
-    )
+    fetch(`http://www.omdbapi.com/?i=${idMovie}&apikey=3f8f181f`)
       .then((response) => response.json())
       .then((response2) => {
         console.log(response2);
@@ -33,9 +27,7 @@ export default function NewBlankForMovie() {
             <div
               className="wrapper-of-backdrop position-relative"
               style={{
-                backgroundImage: `url('https://image.tmdb.org/t/p/original${
-                  dataOfMovie.backdrop_path && dataOfMovie.backdrop_path
-                }')`,
+                backgroundImage: `url('${dataOfMovie.Poster}')`,
               }}
             >
               <div className="custom-opacity-for-backdrop d-flex">
@@ -43,7 +35,7 @@ export default function NewBlankForMovie() {
                   <div className="wrapper-of-img-in-new-blank d-flex justify-content-center p-5 custom-cursor">
                     <img
                       className="img-in-new-black"
-                      src={`https://image.tmdb.org/t/p/w500${dataOfMovie.poster_path}`}
+                      src={dataOfMovie.Poster}
                       alt=""
                     />
                     <i
@@ -56,7 +48,7 @@ export default function NewBlankForMovie() {
                   <div className="wrapper-of-part-title-and-rate mb-5 d-flex justify-content-between">
                     <div className="wrapper-of-title">
                       <h3 className="text-white">
-                        Download {dataOfMovie.title}
+                        Download {dataOfMovie.Title}
                       </h3>
                       <div className="d-flex">
                         <i
@@ -73,16 +65,16 @@ export default function NewBlankForMovie() {
                         <h6>
                           <span
                             className={`font-big  ${calculateRateOfMovie(
-                              dataOfMovie.vote_average
+                              dataOfMovie.imdbRating
                             )}`}
                           >
-                            {dataOfMovie.vote_average}
+                            {dataOfMovie.imdbRating}
                           </span>{" "}
                           / 10
                         </h6>
                       </div>
                       <div className="wrapper-of-point mt-1">
-                        <h6>{dataOfMovie.vote_count} votes</h6>
+                        <h6>{dataOfMovie.imdbVotes} votes</h6>
                       </div>
                       <div className="mt-1">
                         <i
@@ -104,57 +96,47 @@ export default function NewBlankForMovie() {
                         className="fa-solid fa-tv px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      release date : {dataOfMovie.release_date}
+                      Release date : {dataOfMovie.Released}
                     </h6>
                     <h6 className="text-white">
                       <i
                         className="fa-regular fa-clock px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      time : {dataOfMovie.runtime} minute
+                      Time : {dataOfMovie.Runtime}
                     </h6>
                   </div>
                   <div className="wrapper-of-part2 d-flex justify-content-between py-2">
                     <h6 className="text-white">
                       <i
-                        className="fa-solid fa-masks-theater px-2"
+                        className="fa-solid fa-align-justify px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      <Genres genres={dataOfMovie && dataOfMovie.genres} />
+                      Genre : {dataOfMovie.Genre}
                     </h6>
                     <h6>
                       <i
-                        className="fa-solid fa-sack-dollar px-2"
+                        className="fa-solid fa-people-group px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      Budget : {dataOfMovie.budget}$
+                      Rated : {dataOfMovie.Rated}
                     </h6>
                   </div>
 
                   <div className="wrapper-of-part3 d-flex justify-content-between py-2">
                     <h6 className="text-white">
                       <i
-                        className="fa-solid fa-language px-2"
+                        className="fa-solid fa-masks-theater px-2"
                         style={{ color: "#fdb522" }}
                       ></i>
-                      <Language
-                        languages={
-                          dataOfMovie.spoken_languages &&
-                          dataOfMovie.spoken_languages
-                        }
-                      />
+                      Actors : {dataOfMovie.Actors}
                     </h6>
                     <h6 className="text-white">
                       <i
                         className="fa-solid fa-globe px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      <Country
-                        country={
-                          dataOfMovie.production_countries &&
-                          dataOfMovie.production_countries
-                        }
-                      />
+                      Country : {dataOfMovie.Country}
                     </h6>
                   </div>
                   <h6 className="text-white py-2">
@@ -162,26 +144,21 @@ export default function NewBlankForMovie() {
                       className="fa-solid fa-feather px-2"
                       style={{ color: "#fdb522" }}
                     ></i>{" "}
-                    Revenue : {dataOfMovie.revenue}$
+                    Writer : {dataOfMovie.Writer}
                   </h6>
                   <h6 className="text-white py-2">
                     <i
                       className="fa-solid fa-bullhorn px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    <Companies
-                      companies={
-                        dataOfMovie.production_companies &&
-                        dataOfMovie.production_companies
-                      }
-                    />
+                    Director : {dataOfMovie.Director}
                   </h6>
                   <h6 className="text-whtie py-2 line-height-p-2">
                     <i
                       className="fa-solid fa-film px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    {dataOfMovie.overview && dataOfMovie.overview}
+                    {dataOfMovie.Plot}
                   </h6>
                   <div className="wrapper-of-critisize-poeple py-2 d-flex justify-content-between">
                     <div className="wrapper-of-vote-critisize d-flex justify-content-start align-items-center px-2">

@@ -5,7 +5,7 @@ export function calculateRateOfMovie(number) {
     return "text-white";
   } else if (number >= 6 && number < 7) {
     return "text-warning";
-  } else if (number > 7) {
+  } else {
     return "text-success";
   }
 }

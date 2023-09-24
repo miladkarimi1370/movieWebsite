@@ -32,17 +32,17 @@ export default function Header() {
             <nav>
               <ul className="d-flex">
                 <li className="px-4 py-3 custom-hover-for-navbar">
-                  <Link to={"/"} className="text-warning ">
+                  <Link to={"/"} className="text-white ">
                     Home
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
-                  <Link to={"/top-reted"} className="text-warning ">
+                  <Link to={"/top-reted"} className="text-white ">
                     Top Reted
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
-                  <Link to={"/up-coming"} className="text-warning">
+                  <Link to={"/up-coming"} className="text-white">
                     Up Coming
                   </Link>
                 </li>
