@@ -8,7 +8,7 @@ import SpecificMovie from "./page/SpecificMovie";
 export default function App() {
   return (
     <>
-  
+     
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<HomePage />} />

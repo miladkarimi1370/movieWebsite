@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const IdMovieContext = createContext({ idMovie: "tt3896198" });
+const IdMovieContext = createContext({idMovie : 1008042});
 
 export default IdMovieContext;

@@ -11,11 +11,13 @@ export default function NewBlankForMovie() {
   const { idMovie } = useContext(idMovieContext);
   const [dataOfMovie, setDataOfMovie] = useState({});
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?i=${idMovie}&apikey=3f8f181f`)
+    fetch(
+      `https://api.themoviedb.org/3/movie/${idMovie}?api_key=360eec290c1f282ea30004cd946075a7`
+    )
       .then((response) => response.json())
       .then((response2) => {
-        console.log(response2);
         setDataOfMovie(response2);
+        console.log(response2);
       });
   }, [idMovie]);
 
@@ -48,7 +50,7 @@ export default function NewBlankForMovie() {
                   <div className="wrapper-of-part-title-and-rate mb-5 d-flex justify-content-between">
                     <div className="wrapper-of-title">
                       <h3 className="text-white">
-                        Download {dataOfMovie.Title}
+                        Download {dataOfMovie.title}
                       </h3>
                       <div className="d-flex">
                         <i
@@ -65,16 +67,16 @@ export default function NewBlankForMovie() {
                         <h6>
                           <span
                             className={`font-big  ${calculateRateOfMovie(
-                              dataOfMovie.imdbRating
+                              dataOfMovie.vote_average
                             )}`}
                           >
-                            {dataOfMovie.imdbRating}
+                            {dataOfMovie.vote_average}
                           </span>{" "}
                           / 10
                         </h6>
                       </div>
                       <div className="wrapper-of-point mt-1">
-                        <h6>{dataOfMovie.imdbVotes} votes</h6>
+                        <h6>{dataOfMovie.vote_count} votes</h6>
                       </div>
                       <div className="mt-1">
                         <i
@@ -96,14 +98,14 @@ export default function NewBlankForMovie() {
                         className="fa-solid fa-tv px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      Release date : {dataOfMovie.Released}
+                      Release date : {dataOfMovie.released_date}
                     </h6>
                     <h6 className="text-white">
                       <i
                         className="fa-regular fa-clock px-2"
                         style={{ color: "#deb522" }}
                       ></i>
-                      Time : {dataOfMovie.Runtime}
+                      Time : {dataOfMovie.runtime}
                     </h6>
                   </div>
                   <div className="wrapper-of-part2 d-flex justify-content-between py-2">
@@ -112,14 +114,14 @@ export default function NewBlankForMovie() {
                         className="fa-solid fa-align-justify px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      Genre : {dataOfMovie.Genre}
+                      Genre :
                     </h6>
                     <h6>
                       <i
                         className="fa-solid fa-people-group px-2"
                         style={{ color: "#fdb522" }}
                       ></i>{" "}
-                      Rated : {dataOfMovie.Rated}
+                      Rated : PG-13
                     </h6>
                   </div>
 
@@ -129,7 +131,7 @@ export default function NewBlankForMovie() {
                         className="fa-solid fa-masks-theater px-2"
                         style={{ color: "#fdb522" }}
                       ></i>
-                      Actors : {dataOfMovie.Actors}
+                      Actors : {dataOfMovie.budget}
                     </h6>
                     <h6 className="text-white">
                       <i
@@ -144,21 +146,21 @@ export default function NewBlankForMovie() {
                       className="fa-solid fa-feather px-2"
                       style={{ color: "#fdb522" }}
                     ></i>{" "}
-                    Writer : {dataOfMovie.Writer}
+                    Writer : {dataOfMovie.original_language}
                   </h6>
                   <h6 className="text-white py-2">
                     <i
                       className="fa-solid fa-bullhorn px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    Director : {dataOfMovie.Director}
+                    Director : {dataOfMovie.revenue}
                   </h6>
                   <h6 className="text-whtie py-2 line-height-p-2">
                     <i
                       className="fa-solid fa-film px-2"
                       style={{ color: "#fdb522" }}
                     ></i>
-                    {dataOfMovie.Plot}
+                    {dataOfMovie.overview}
                   </h6>
                   <div className="wrapper-of-critisize-poeple py-2 d-flex justify-content-between">
                     <div className="wrapper-of-vote-critisize d-flex justify-content-start align-items-center px-2">
