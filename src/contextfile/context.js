@@ -1,5 +1,16 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const IdMovieContext = createContext({idMovie : 1008042});
+export const IdMovieContext = createContext({
+  idMovie : "",
+  setIdMovie: () => {},
+});
 
-export default IdMovieContext;
+export const ContextProvider = ({ children }) => {
+  const [idMovie, setIdMovie] = useState();
+
+  return (
+    <IdMovieContext.Provider value={{ idMovie, setIdMovie }}>
+      {children}
+    </IdMovieContext.Provider>
+  );
+};
