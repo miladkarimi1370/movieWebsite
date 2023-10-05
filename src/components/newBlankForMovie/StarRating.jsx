@@ -7,9 +7,9 @@ export default function StarRating() {
   const handleRating = (rate) => {
     setRating(rate);
   };
-  const onPointerEnter = () => console.log("Enter");
-  const onPointerLeave = () => console.log("Leave");
-  const onPointerMove = (value, index) => console.log(value, index);
+  const onPointerEnter = () => console.log("");
+  const onPointerLeave = () => console.log("");
+  const onPointerMove = (value, index) => console.log("");
   return (
     <>
       <div className="App">
@@ -20,7 +20,7 @@ export default function StarRating() {
           onPointerMove={onPointerMove}
         />
         <div>
-            <h6 className="text-center">3.18 from 698 votes</h6>
+          <h6 className="text-center">3.18 from 698 votes</h6>
         </div>
       </div>
     </>

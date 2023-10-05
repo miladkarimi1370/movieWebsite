@@ -33,6 +33,7 @@ a {
 .custom-cursor {
   cursor: pointer !important;
 }
+
 .custom-z-index-for-list-show-movie {
   z-index: 10;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "animate.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { IdMovieContext } from "../../contextfile/context";
@@ -17,12 +16,15 @@ export default function TemplateOfCard({
   const { setIdMovie } = useContext(IdMovieContext);
   const addNewIdToContext = () => {
     setIdMovie(id);
+    localStorage.setItem("idMovie", JSON.stringify(id));
   };
   return (
     <>
       <div className="col d-flex justify-content-center mt-5">
-        <div
-          className={`card custom-border-for-card custom-color-for-card custom-z-index-for-card animate__animated animate__fadeInUp`}
+        <Link
+          to={"/SpecificMovie"}
+          onClick={addNewIdToContext}
+          className={`card custom-border-for-card custom-color-for-card custom-z-index-for-card`}
           style={{ width: 18 + "rem" }}
         >
           <img
@@ -58,16 +60,10 @@ export default function TemplateOfCard({
                 {overview}
               </p>
 
-              <Link
-                to={"/SpecificMovie"}
-                className="btn btn-primary btn-sm"
-                onClick={addNewIdToContext}
-              >
-                view more
-              </Link>
+              <div className="btn btn-primary btn-sm">view more</div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </>
   );

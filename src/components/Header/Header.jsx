@@ -3,12 +3,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Header() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [showListMovies, setShowListMovis] = useState("invisible");
-  
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=360eec290c1f282ea30004cd946075a7&query=${query}`
@@ -32,17 +31,17 @@ export default function Header() {
             <nav>
               <ul className="d-flex">
                 <li className="px-4 py-3 custom-hover-for-navbar">
-                  <Link to={"/"} className="text-white ">
+                  <Link to={"/"} className="text-white fw-bold">
                     Home
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
-                  <Link to={"/top-reted"} className="text-white ">
+                  <Link to={"/top-reted"} className="text-white fw-bold">
                     Top Reted
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
-                  <Link to={"/up-coming"} className="text-white">
+                  <Link to={"/up-coming"} className="text-white fw-bold">
                     Up Coming
                   </Link>
                 </li>

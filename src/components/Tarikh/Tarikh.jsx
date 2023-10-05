@@ -12,7 +12,7 @@ export default function Tarikh() {
   }, []);
   return (
     <>
-      <p className="text-center text-white p-3 custom-tarikh bg-info rounded-pill fw-bold">
+      <p className="text-center text-white p-2 custom-tarikh bg-info rounded-pill fst-italic">
         {dateNow && dateNow}
       </p>
     </>

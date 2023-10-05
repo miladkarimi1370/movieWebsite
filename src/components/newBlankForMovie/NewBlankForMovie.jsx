@@ -12,8 +12,12 @@ export default function NewBlankForMovie() {
 
   const [dataOfMovie, setDataOfMovie] = useState({});
   useEffect(() => {
+    const idLocalStorage = JSON.parse(localStorage.getItem("idMovie"));
+
     fetch(
-      `https://api.themoviedb.org/3/movie/${idMovie}?api_key=360eec290c1f282ea30004cd946075a7`
+      `https://api.themoviedb.org/3/movie/${
+        !idLocalStorage ? idMovie : idLocalStorage
+      }?api_key=360eec290c1f282ea30004cd946075a7`
     )
       .then((response) => response.json())
       .then((response2) => {

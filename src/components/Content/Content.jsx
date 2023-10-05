@@ -7,20 +7,25 @@ export default function Content() {
   const [page, setPage] = useState(1);
   const [showLoader, setShowLoader] = useState(true);
   useEffect(() => {
+    const localPage = JSON.parse(localStorage.getItem("page"));
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=360eec290c1f282ea30004cd946075a7&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=360eec290c1f282ea30004cd946075a7&page=${
+        !localPage ? page : localPage
+      }`
     )
       .then((response) => response.json())
       .then((respone) => {
         setMovies(respone.results);
         setPage(respone.page);
         setShowLoader(false);
+        localStorage.setItem("page", JSON.stringify(respone.page));
       });
   }, [page]);
 
   const pageHandler = (e) => {
     setPage(e);
     setShowLoader(true);
+    localStorage.setItem("page", JSON.stringify(e));
   };
 
   const informationOfMovies =
