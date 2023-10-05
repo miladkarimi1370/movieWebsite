@@ -56,9 +56,7 @@ a {
 .custom-border-for-card {
   border: 1px solid #352f44;
 }
-.custom-color-for-header {
-  background-color: #183d3d;
-}
+
 .custom-radius-for-header {
   border-radius: 6% 94% 11% 89% / 100% 0% 100% 0%;
   opacity: 0.9;

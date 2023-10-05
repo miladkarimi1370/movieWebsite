@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import TemplateOfCard from "./TemplateOfCard";
 import Pagination from "./Pagination";
 import { Oval } from "react-loader-spinner";
+
 export default function Content() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [showLoader, setShowLoader] = useState(true);
+
   useEffect(() => {
     const localPage = JSON.parse(localStorage.getItem("page"));
     fetch(
@@ -43,7 +45,7 @@ export default function Content() {
           </div>
           <Pagination
             pageHandler={pageHandler}
-            totalPages={movies.total_pages}
+            totalPages={movies && movies.total_pages}
             currentPage={page}
           />
         </div>

@@ -25,23 +25,35 @@ export default function Header() {
   }, [query]);
   return (
     <>
-      <div className="container-fluid custom-color-for-header custom-radius-for-header">
+      <div className="container-fluid custom-radius-for-header">
         <div className="row d-flex align-items-center">
           <div className="col-sm-12 col-md-8">
-            <nav>
+            <nav className="my-4">
               <ul className="d-flex">
                 <li className="px-4 py-3 custom-hover-for-navbar">
                   <Link to={"/"} className="text-white fw-bold">
+                    <i
+                      className="fa-solid fa-house-chimney fa-sm"
+                      style={{ color: "#ffffff" }}
+                    ></i>{" "}
                     Home
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
                   <Link to={"/top-reted"} className="text-white fw-bold">
+                    <i
+                      className="fa-solid fa-jet-fighter-up fa-sm"
+                      style={{ color: "#ffffff" }}
+                    ></i>{" "}
                     Top Reted
                   </Link>
                 </li>
                 <li className="px-4 py-3  custom-hover-for-navbar">
                   <Link to={"/up-coming"} className="text-white fw-bold">
+                    <i
+                      className="fa-solid fa-person-through-window fa-sm"
+                      style={{ color: "#ffffff" }}
+                    ></i>{" "}
                     Up Coming
                   </Link>
                 </li>
