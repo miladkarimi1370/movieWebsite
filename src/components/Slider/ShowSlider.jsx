@@ -14,7 +14,6 @@ export default function ShowSlider() {
     )
       .then((response) => response.json())
       .then((response2) => {
-        console.log(response2);
         setNowPlayingMovie(response2.results);
       });
   }, []);
@@ -28,11 +27,12 @@ export default function ShowSlider() {
 
     infinite: true,
     speed: 700,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 5,
     autoplay: true,
     autoplaySpeed: 3000,
-    focusOnSelect: true,
+    
+
   };
   return (
     <>

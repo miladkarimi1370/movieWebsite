@@ -24,12 +24,12 @@ export default function TemplateOfCard({
         <Link
           to={"/SpecificMovie"}
           onClick={addNewIdToContext}
-          className={`card custom-border-for-card custom-color-for-card custom-z-index-for-card`}
+          className={`card bg-dark bg-dark custom-z-index-for-card custom-rounded`}
           style={{ width: 18 + "rem" }}
         >
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            className="card-img-top p-4 rounded custom-cursor"
+            className="card-img-top p-4 custom-cursor custom-rounded-for-img-in-template-of-card"
             alt={title}
           />
           <div className="card-body d-flex flex-column justify-content-between">
@@ -60,7 +60,7 @@ export default function TemplateOfCard({
                 {overview}
               </p>
 
-              <div className="btn btn-primary btn-sm">view more</div>
+              <div className="btn btn-primary btn-sm rounded-pill">view more</div>
             </div>
           </div>
         </Link>

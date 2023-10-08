@@ -6,7 +6,7 @@ export default function TemplateOfSlider({ vote_average, title, poster_path }) {
       <div className="card bg-dark text-white">
         <img
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-          className="card-img"
+          className="card-img custom-border-radius-for-slider"
           alt={title}
         />
         <div className="card-img-overlay d-flex flex-column justify-content-between">

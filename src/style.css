@@ -33,7 +33,12 @@ a {
 .custom-cursor {
   cursor: pointer !important;
 }
-
+.custom-rounded{
+  border-radius: 1rem;
+}
+.custom-rounded-for-img-in-template-of-card{
+  border-radius: 40px;
+}
 .custom-z-index-for-list-show-movie {
   z-index: 10;
 }
@@ -49,12 +54,6 @@ a {
 }
 .custom-height-for-overview {
   height: 10rem;
-}
-.custom-color-for-card {
-  background-color: #352f44;
-}
-.custom-border-for-card {
-  border: 1px solid #352f44;
 }
 
 .custom-radius-for-header {
